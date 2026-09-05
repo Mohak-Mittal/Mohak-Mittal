@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/hero_wave.svg" alt="Mohak Mittal" width="100%"/>
+<img src="hero_wave.svg" alt="Mohak Mittal" width="100%"/>
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=20&duration=2600&pause=900&color=00E5FF&center=true&vCenter=true&width=560&lines=Building+immersive+3D+worlds;Pure+C%2B%2B+%26+Real-time+Graphics;Currently+crafting+a+horror+game;Code.+Build.+Play.+Repeat." alt="Typing SVG"/>
 
