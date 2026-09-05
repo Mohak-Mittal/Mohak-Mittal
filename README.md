@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=250&section=header&text=MOHAK%20MITTAL&fontSize=50&fontColor=ffffff&fontAlignY=32&animation=fadeIn&desc=Unreal%20Engine%20Developer%20%C2%B7%20C%2B%2B%20Enthusiast%20%C2%B7%20Game%20Dev&descAlignY=55&descSize=18&descColor=d6ecff" width="100%"/>
+<img src="hero.svg" alt="Mohak Mittal" width="100%"/>
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=20&duration=2600&pause=900&color=00E5FF&center=true&vCenter=true&width=560&lines=Building+immersive+3D+worlds;Pure+C%2B%2B+%26+Real-time+Graphics;Currently+crafting+a+horror+game;Code.+Build.+Play.+Repeat." alt="Typing SVG"/>
 
