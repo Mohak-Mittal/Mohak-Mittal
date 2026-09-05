@@ -1,17 +1,16 @@
 <div align="center">
 
-<img src="hero_banner.png" alt="Mohak Mittal" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=250&section=header&text=MOHAK%20MITTAL&fontSize=50&fontColor=ffffff&fontAlignY=32&animation=fadeIn&desc=Unreal%20Engine%20Developer%20%C2%B7%20C%2B%2B%20Enthusiast%20%C2%B7%20Game%20Dev&descAlignY=55&descSize=18&descColor=d6ecff" width="100%"/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=90&section=header" width="100%"/>
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=20&duration=2600&pause=900&color=00E5FF&center=true&vCenter=true&width=560&lines=Building+immersive+3D+worlds;Pure+C%2B%2B+%26+Real-time+Graphics;Currently+crafting+a+horror+game;Code.+Build.+Play.+Repeat." alt="Typing SVG"/>
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=24&duration=2500&pause=800&color=00E5FF&center=true&vCenter=true&width=750&lines=Building+immersive+3D+worlds+in+Unreal+Engine+5;Pure+C%2B%2B+%7C+Real-time+Graphics+%7C+Game+Dev;Currently+crafting+a+Granny-style+horror+game;Code.+Build.+Play.+Repeat." alt="Typing SVG" /></a>
+</div>
 
-<br/>
+<div align="center">
 
-<a href="https://github.com/mohak-mittal"><img src="https://img.shields.io/badge/GitHub-mohak--mittal-00e5ff?style=for-the-badge&logo=github&logoColor=white&labelColor=0b0b1e"/></a>
-<a href="https://linkedin.com/in/mohak-mittal92"><img src="https://img.shields.io/badge/LinkedIn-Connect-7b2ff7?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0b0b1e"/></a>
-<a href="mailto:mohakmittal2003@gmail.com"><img src="https://img.shields.io/badge/Email-Reach%20Out-ff2b4d?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0b0b1e"/></a>
-<img src="https://komarev.com/ghpvc/?username=mohak-mittal&style=for-the-badge&color=7b2ff7&label=PROFILE+VIEWS"/>
+I build immersive 3D experiences and interactive applications. Passionate about **Game Development**, **Real-time Graphics**, and creating impactful projects.
+
+📍 Barnala, Punjab, India &nbsp;|&nbsp; 🎓 BCA Graduate
 
 </div>
 
