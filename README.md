@@ -1,12 +1,17 @@
 <div align="center">
 
-<img src="hero_banner.png" alt="Mohak Mittal" width="100%"/>
+<img src="assets/hero_banner.png" alt="Mohak Mittal" width="100%"/>
 
-<br/><br/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=90&section=header" width="100%"/>
+
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=24&duration=2500&pause=800&color=00E5FF&center=true&vCenter=true&width=750&lines=Building+immersive+3D+worlds+in+Unreal+Engine+5;Pure+C%2B%2B+%7C+Real-time+Graphics+%7C+Game+Dev;Currently+crafting+a+Granny-style+horror+game;Code.+Build.+Play.+Repeat." alt="Typing SVG" /></a>
+
+<br/>
 
 <a href="https://github.com/mohak-mittal"><img src="https://img.shields.io/badge/GitHub-mohak--mittal-00e5ff?style=for-the-badge&logo=github&logoColor=white&labelColor=0b0b1e"/></a>
 <a href="https://linkedin.com/in/mohak-mittal92"><img src="https://img.shields.io/badge/LinkedIn-Connect-7b2ff7?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0b0b1e"/></a>
 <a href="mailto:mohakmittal2003@gmail.com"><img src="https://img.shields.io/badge/Email-Reach%20Out-ff2b4d?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0b0b1e"/></a>
+<img src="https://komarev.com/ghpvc/?username=mohak-mittal&style=for-the-badge&color=7b2ff7&label=PROFILE+VIEWS"/>
 
 </div>
 
@@ -106,6 +111,24 @@ Personal site hosted on GitHub Pages with a Cloudflare Worker backend, featuring
 
 <br/>
 
+## 🏆 Trophies
+
+<div align="center">
+<img src="https://github-profile-trophy.vercel.app/?username=mohak-mittal&theme=radical&no-frame=true&row=1&column=6"/>
+</div>
+
+<br/>
+
+## 🐍 Contribution Snake
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/output/github-contribution-grid-snake-dark.svg" alt="snake animation" width="100%"/>
+</div>
+
+> This one's a live animated snake eating your actual contribution graph — it needs the included GitHub Action (`.github/workflows/snake.yml`) to run once in your repo before it shows up. See setup notes below.
+
+<br/>
+
 ## 💭 What I Believe
 
 > Code isn't just about syntax — it's about solving real problems and building something people actually love using.
@@ -122,8 +145,8 @@ I'm always open to collaboration, freelance work, or just talking shop about gam
 <a href="https://linkedin.com/in/mohak-mittal92"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
 <a href="mailto:mohakmittal2003@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white"/></a>
 
-<br/><br/>
-
-*Thanks for visiting! ⭐*
-
 </div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=90&section=footer" width="100%"/>
+
+<div align="center"><i>Thanks for visiting! ⭐</i></div>
