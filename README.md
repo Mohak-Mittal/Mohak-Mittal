@@ -30,7 +30,7 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=cpp,py,unreal,blender,visualstudio,git,github,vscode,html,java,windows&theme=dark&perline=11" alt="Tech Stack"/>
+<img src="tech_stack.svg" alt="Tech Stack" width="100%"/>
 
 </div>
 
