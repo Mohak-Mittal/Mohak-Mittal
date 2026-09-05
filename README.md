@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Mohak Mittal" width="100%"/>
+<img src="assets/hero_banner.png" alt="Mohak Mittal" width="100%"/>
 
-<br/>
+<br/><br/>
 
 <a href="https://github.com/mohak-mittal"><img src="https://img.shields.io/badge/GitHub-mohak--mittal-00e5ff?style=for-the-badge&logo=github&logoColor=white&labelColor=0b0b1e"/></a>
 <a href="https://linkedin.com/in/mohak-mittal92"><img src="https://img.shields.io/badge/LinkedIn-Connect-7b2ff7?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0b0b1e"/></a>
@@ -27,7 +27,9 @@ I'm an indie developer who builds immersive 3D worlds and interactive experience
 ## 🛠️ Tech Stack
 
 <div align="center">
-<img src="assets/techstack.svg" alt="Tech Stack" width="100%"/>
+
+<img src="https://skillicons.dev/icons?i=cpp,py,unreal,blender,visualstudio,git,github,vscode,html,java,windows&theme=dark&perline=11" alt="Tech Stack"/>
+
 </div>
 
 <br/>
