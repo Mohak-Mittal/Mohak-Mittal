@@ -1,86 +1,49 @@
 <div align="center">
 
-<svg width="180" height="180" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="mmGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff"/>
-      <stop offset="100%" stop-color="#7b2ff7"/>
-    </linearGradient>
-    <linearGradient id="mmGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff3df0"/>
-      <stop offset="100%" stop-color="#00f0ff"/>
-    </linearGradient>
-    <filter id="mmGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <radialGradient id="mmBgGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <circle cx="110" cy="110" r="105" fill="url(#mmBgGlow)"/>
-  <g>
-    <ellipse cx="110" cy="110" rx="95" ry="35" fill="none" stroke="url(#mmGrad1)" stroke-width="1.4" opacity="0.55">
-      <animateTransform attributeName="transform" type="rotate" from="0 110 110" to="360 110 110" dur="6s" repeatCount="indefinite"/>
-    </ellipse>
-  </g>
-  <g>
-    <ellipse cx="110" cy="110" rx="95" ry="35" fill="none" stroke="url(#mmGrad2)" stroke-width="1.4" opacity="0.4" transform="rotate(60 110 110)">
-      <animateTransform attributeName="transform" type="rotate" from="60 110 110" to="420 110 110" dur="8s" repeatCount="indefinite"/>
-    </ellipse>
-  </g>
-  <g>
-    <ellipse cx="110" cy="110" rx="95" ry="35" fill="none" stroke="#ffcc33" stroke-width="1" opacity="0.3" transform="rotate(120 110 110)">
-      <animateTransform attributeName="transform" type="rotate" from="120 110 110" to="480 110 110" dur="10s" repeatCount="indefinite"/>
-    </ellipse>
-  </g>
-  <g>
-    <circle r="3.4" fill="#ffcc33" filter="url(#mmGlow)">
-      <animateMotion dur="6s" repeatCount="indefinite" path="M 15,110 A 95,35 0 1 1 205,110 A 95,35 0 1 1 15,110 Z"/>
-    </circle>
-  </g>
-  <g filter="url(#mmGlow)">
-    <polygon points="110,55 155,82 155,138 110,165 65,138 65,82" fill="none" stroke="url(#mmGrad1)" stroke-width="2.2">
-      <animateTransform attributeName="transform" type="rotate" from="0 110 110" to="360 110 110" dur="7s" repeatCount="indefinite"/>
-      <animate attributeName="stroke-opacity" values="1;0.4;1" dur="2.5s" repeatCount="indefinite"/>
-    </polygon>
-    <polygon points="110,70 142,90 142,130 110,150 78,130 78,90" fill="none" stroke="url(#mmGrad2)" stroke-width="1.6">
-      <animateTransform attributeName="transform" type="rotate" from="360 110 110" to="0 110 110" dur="5s" repeatCount="indefinite"/>
-    </polygon>
-    <text x="110" y="122" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-weight="700" font-size="34" fill="#eafffe">
-      MM
-      <animateTransform attributeName="transform" type="scale" values="1,1;1.12,0.9;1,1;0.9,1.12;1,1" dur="4s" repeatCount="indefinite" additive="sum"/>
-    </text>
-  </g>
-  <circle cx="110" cy="110" r="18" fill="none" stroke="#00f0ff" stroke-width="1" opacity="0">
-    <animate attributeName="r" values="18;100" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.5;0" dur="3s" repeatCount="indefinite"/>
-  </circle>
-</svg>
+```
+> whoami
+```
 
-# MOHAK MITTAL
-### Game Developer · 3D Artist · Systems Builder
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=26&duration=3000&pause=800&color=00FF41&center=true&vCenter=true&multiline=true&repeat=true&width=650&height=100&lines=MOHAK+MITTAL;GAME+DEVELOPER+%2F%2F+3D+ARTIST;BUILDING+A+STUDIO%2C+ONE+SYSTEM+AT+A+TIME." alt="Typing SVG" />
 
-<a href="https://mohak-mittal.github.io/Portfolio" target="_blank"><img src="https://img.shields.io/badge/PORTFOLIO-mohak--mittal.github.io-00f0ff?style=for-the-badge&logo=googlechrome&logoColor=black&labelColor=0b0b1e" /></a>
+![matrix rain divider](https://raw.githubusercontent.com/vsnthdev/vsnthdev/main/static/wave.gif)
+
+</div>
+
+```diff
++ SELF-TAUGHT   C, C++, JAVA, PYTHON, HTML/CSS
++ ENGINE        Unreal Engine 5
++ 3D            Blender
++ SHIP          Cloudflare Workers, full-stack side projects
++ CURRENT FOCUS Deepening C++ specifically for game development
++ END GOAL      Founding my own game studio
+```
+
+<div align="center">
+
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-mohak--mittal.github.io-00FF41?style=for-the-badge&logo=googlechrome&logoColor=black&labelColor=000000)](https://mohak-mittal.github.io/Portfolio)
+[![Status](https://img.shields.io/badge/STATUS-COMPILING...-00FF41?style=for-the-badge&labelColor=000000)]()
 
 </div>
 
 <br/>
 
-> Building toward one thing: **my own game studio.** Everything below — the engine work, the 3D art, the tools — is on that road.
+## `$ ./run gravity_drift.exe`
 
-<br/>
+Not a Snake clone, not a to-do-list dressed up as a "game." **Gravity Drift** — you pilot a drone through rotating gravity wells, slingshotting around them for energy cores. One wrong angle and the well eats you.
 
-## ⚡ Play "Gravity Drift" — an original game, built for this profile
+The preview below is a **live, self-running simulation** — not a screenshot, not a video file. It's pure SVG + SMIL animation tracing actual orbital paths, looping forever, right here in this README:
 
-Not another Snake clone. You pilot a drone through a field of rotating gravity wells, slingshotting around them to grab energy cores. Get too close and the pull kills you — no safe path, no memorized route, just physics and nerve. The full source is embedded below in one file: **copy it into a `.html` file and open it in any browser to play instantly**, or drop it on GitHub Pages as `index.html` for a shareable link.
+<div align="center">
+
+<img src="./gravity-sim.svg" width="700" alt="Gravity Drift — self-playing simulation preview" />
+
+</div>
+
+<sub>↑ that's rendering live in your browser right now, no JS, no video, no external service. The full playable build (mouse-controlled, escalating difficulty, persistent high score) is source-embedded below — copy it into an `.html` file and it runs instantly, or drop it on GitHub Pages for a link.</sub>
 
 <details>
-<summary><b>▶ Click to expand the full game source (single HTML file, no dependencies)</b></summary>
+<summary><code>$ cat gravity-drift/index.html</code> — expand full source (single file, zero dependencies)</summary>
 
 ```html
 <!DOCTYPE html>
@@ -497,143 +460,97 @@ Not another Snake clone. You pilot a drone through a field of rotating gravity w
 
 </details>
 
-<sub>💡 To make it live: paste the code above into a file named `index.html`, push it to a new repo, enable **GitHub Pages** in that repo's settings, and you'll have a shareable link in under a minute.</sub>
+<br/>
+
+## `$ cat about.md`
+
+```
+root@mohak:~$ whoami --verbose
+
+  base       : Barnala, Punjab, India
+  education  : BCA · 6th semester · S.D. College Barnala (Punjabi University, Patiala)
+  role       : Game Developer / 3D Artist — self-taught
+  stack      : C, C++, Java, Python, HTML, CSS
+  engine     : Unreal Engine 5
+  3D suite   : Blender
+  deploy     : Cloudflare Workers
+  status     : deepening C++ for game dev, grinding toward a studio of my own
+```
 
 <br/>
 
-## 🧭 About
-
-I'm a BCA student (6th semester, S.D. College Barnala, affiliated with Punjabi University, Patiala) from Barnala, Punjab — and a self-taught game developer and 3D artist working toward founding my own game studio. I spend most of my time in **Unreal Engine 5** and **Blender**, and I build the tools and systems around my games myself: backends, voice assistants, productivity apps, whatever the project needs.
-
-- 🎮 Deepening **C++** specifically for game development
-- 🧠 Comfortable across **C, C++, HTML, CSS, Java, Python** — self-taught, medium-to-strong depth
-- ☁️ Ship full-stack side projects on **Cloudflare Workers**
-- 🎯 Long game: my own studio, shipping original titles
-
-<br/>
-
-## 🛠️ Built with
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/Unreal_Engine_5-0E1128?style=for-the-badge&logo=unrealengine&logoColor=white" />
-<img src="https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white" />
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-<img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white" />
-<img src="https://img.shields.io/badge/Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" />
-<img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
-
-</div>
-
-<br/>
-
-## 🚀 Projects
+## `$ ls ./projects/`
 
 <table>
-<tr>
-<td width="50%" valign="top">
+<tr><td>
 
-### 🌌 VOID RIFT
-Top-down roguelite shooter — the culmination of a series of web games I built to level up my combat and enemy-AI systems.
-- Six distinct enemy AI types
-- Full ability + XP/leveling system
-- Ten escalating difficulty waves
-- WASD + mouse controls
-
+**`void_rift/`**
+Top-down roguelite shooter — six enemy AI types, full ability + XP system, ten escalating waves, WASD + mouse.
 `JavaScript` `Canvas` `Game AI`
 
-</td>
-<td width="50%" valign="top">
+</td><td>
 
-### ⚔️ Solo Leveling RPG Tracker
-A Solo Leveling–inspired productivity app that turns your real tasks into idle dungeon combat — canonical character roster, E-through-Monarch ranking, equip slots.
-- Idle dungeon combat loop
-- Canonical Solo Leveling character store
-- 3D-rendered UI elements
+**`sl_rpg_tracker/`**
+Solo Leveling-inspired productivity app. Real tasks become idle dungeon combat — canonical character roster, E-through-Monarch ranking.
+`Three.js` `Vanilla JS`
 
-`Three.js` `Vanilla JS` `localStorage`
+</td></tr>
+<tr><td>
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+**`fitforge/`**
+AI fitness app — Groq-generated vegetarian meal plans, streak tracking, progressive difficulty, 20 achievements.
+`Cloudflare Workers` `Groq API`
 
-### 💪 FitForge
-An AI fitness web app that builds vegetarian meal plans, tracks streaks, and scales difficulty as you progress — 20 achievements to unlock.
-- AI-generated meal planning via Groq
-- Streak tracking + progressive difficulty
-- 20-achievement system
+</td><td>
 
-`Cloudflare Workers` `Groq API` `JavaScript`
+**`toolzone/`**
+Free online tools platform, still growing. Percentage / discount / GST calculators live, modular per-tool architecture.
+`JavaScript`
 
-</td>
-<td width="50%" valign="top">
+</td></tr>
+<tr><td>
 
-### 🧰 ToolZone
-A free online tools platform, still growing — percentage, discount, and GST calculators live, more on the way, built with a modular per-tool file structure so new tools drop in clean.
-
-`JavaScript` `Modular Architecture`
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 🎨 Portfolio + ARIA
-My personal site — dark neon cyberpunk aesthetic, UE5/Blender showcases, and **ARIA**: a full-screen HUD voice assistant (JARVIS/Friday-style) with radar sweeps and a Groq-powered Llama backend that actually knows my portfolio content.
-- Full-screen HUD: radar rings, conic sweep, hex grid
-- Groq Llama backend via Cloudflare Worker
-- Web Speech API with local-voice prioritization
-
+**`portfolio/ + aria/`**
+Cyberpunk personal site with **ARIA** — a JARVIS-style full-screen HUD voice assistant, radar sweeps, Groq/Llama backend that actually knows my work.
 `Cloudflare Workers` `Groq` `Web Speech API`
 
-</td>
-<td width="50%" valign="top">
+</td><td>
 
-### 🤖 Jarvis PC Assistant
-A Python voice assistant that controls my PC by voice — modular by design, with dedicated modules for listening, reasoning, speech, and system control.
-- `listener.py` → `brain.py` → `speaker.py` → `system.py`
-- Custom file indexer for fast local lookup
+**`jarvis_pc/`**
+Python voice assistant controlling my PC — `listener.py → brain.py → speaker.py → system.py`, custom file indexer.
+`Python` `Automation`
 
-`Python` `Voice Control` `Automation`
-
-</td>
-</tr>
+</td></tr>
 </table>
 
 <br/>
 
-## 📊 GitHub Stats
+## `$ curl stats.mohak`
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=Mohak-Mittal&show_icons=true&theme=radical&hide_border=true&bg_color=0b0b1e&title_color=00f0ff&icon_color=ff3df0&text_color=e6f7ff" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mohak-Mittal&layout=compact&theme=radical&hide_border=true&bg_color=0b0b1e&title_color=00f0ff&text_color=e6f7ff" />
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=Mohak-Mittal&show_icons=true&hide_border=true&bg_color=000000&title_color=00FF41&icon_color=39FF6A&text_color=8DFFB0&border_color=00FF41" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mohak-Mittal&layout=compact&hide_border=true&bg_color=000000&title_color=00FF41&text_color=8DFFB0&border_color=00FF41" />
 
 <br/>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=Mohak-Mittal&theme=radical&hide_border=true&background=0b0b1e&ring=00f0ff&fire=ff3df0&currStreakLabel=00f0ff" />
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=Mohak-Mittal&hide_border=true&background=000000&ring=00FF41&fire=39FF6A&currStreakLabel=00FF41&sideLabels=8DFFB0&dates=4d5a4d" />
 
 </div>
 
 <br/>
 
-## 📡 Connect
+## `$ ping mohak --connect`
 
 <div align="center">
 
-<a href="https://mohak-mittal.github.io/Portfolio" target="_blank"><img src="https://img.shields.io/badge/Portfolio-00f0ff?style=for-the-badge&logo=googlechrome&logoColor=black" /></a>
-<!-- add your real handles below -->
-<a href="#"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-<a href="#"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" /></a>
-<a href="mailto:you@example.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-000000?style=for-the-badge&logo=googlechrome&logoColor=00FF41)](https://mohak-mittal.github.io/Portfolio)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-000000?style=for-the-badge&logo=linkedin&logoColor=00FF41)](#)
+[![Instagram](https://img.shields.io/badge/INSTAGRAM-000000?style=for-the-badge&logo=instagram&logoColor=00FF41)](#)
+[![Email](https://img.shields.io/badge/EMAIL-000000?style=for-the-badge&logo=gmail&logoColor=00FF41)](mailto:you@example.com)
 
 </div>
 
-<br/>
-
 <div align="center">
-<sub>🎮 Currently deepening C++ for game dev · Building toward my own studio, one system at a time.</sub>
+<sub>connection stable · last compiled: runtime · building a studio, one commit at a time_</sub>
 </div>
