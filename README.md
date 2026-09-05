@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/hero_banner.png" alt="Mohak Mittal" width="100%"/>
+<img src="hero_banner.png" alt="Mohak Mittal" width="100%"/>
 
 <br/><br/>
 
