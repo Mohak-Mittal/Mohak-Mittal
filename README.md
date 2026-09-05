@@ -26,6 +26,12 @@ I'm an indie developer who builds immersive 3D worlds and interactive experience
 - 🌱 Always learning — currently deep in Unreal Engine 5 and modern C++
 - ⚡ Status: `Code. Build. Play. Repeat.`
 
+<div align="center">
+
+<img src="hologram_skills.svg" alt="skills hologram" width="100%"/>
+
+</div>
+
 <br/>
 
 ## 🛠️ Tech Stack
