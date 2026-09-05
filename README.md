@@ -122,10 +122,16 @@ Personal site hosted on GitHub Pages with a Cloudflare Worker backend, featuring
 ## 🐍 Contribution Snake
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/output/github-contribution-grid-snake-dark.svg" alt="snake animation" width="100%"/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/output/github-contribution-grid-snake.svg" />
+  <img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/output/github-contribution-grid-snake-dark.svg" alt="snake animation" width="100%"/>
+</picture>
+
 </div>
 
-> This one's a live animated snake eating your actual contribution graph — it needs the included GitHub Action (`.github/workflows/snake.yml`) to run once in your repo before it shows up. See setup notes below.
+> A neon-purple snake that eats through your real contribution graph — regenerated daily by the included GitHub Action. Its length is tied to your actual 52-week contribution history (that part's controlled by GitHub, not by us), but the deep-violet-to-neon-magenta gradient is fully custom.
 
 <br/>
 
