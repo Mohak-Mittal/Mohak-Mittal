@@ -18,17 +18,9 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 ## 👋 About Me
 
-I'm an indie developer who builds immersive 3D worlds and interactive experiences — mostly living inside **Unreal Engine 5** and **C++**. I like turning ideas into things you can actually walk around in, drive through, or talk to.
-
-- 🎮 Currently building a **Granny-style first-person horror game** in pure C++ (UE5)
-- 🧠 Also shipped an **AI companion app** with a reactive VRM avatar + voice
-- 🌐 Full-stack side quests: fitness dashboards, portfolio sites, 3D web experiments
-- 🌱 Always learning — currently deep in Unreal Engine 5 and modern C++
-- ⚡ Status: `Code. Build. Play. Repeat.`
-
 <div align="center">
 
-<img src="hologram_skills.svg" alt="skills hologram" width="100%"/>
+<img src="hologram_skills.svg" alt="About Me + skills hologram" width="100%"/>
 
 </div>
 
