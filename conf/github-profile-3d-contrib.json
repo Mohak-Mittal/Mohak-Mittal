@@ -1,6 +1,6 @@
 [
     {
-        "type": "normal",
+        "type": "rainbow",
         "fileName": "profile-custom.svg",
         "backgroundColor": "#0a0518",
         "foregroundColor": "#eeeeff",
@@ -8,12 +8,15 @@
         "weakColor": "#3b0a63",
         "radarColor": "#c084fc",
         "growingAnimation": true,
-        "contribColors": [
-            "#140a24",
-            "#3b0a63",
-            "#6d1fc2",
-            "#a133f0",
-            "#e879f9"
-        ]
+        "saturation": "65%",
+        "contribLightness": [
+            "18%",
+            "30%",
+            "42%",
+            "58%",
+            "72%"
+        ],
+        "duration": "8s",
+        "hueRatio": 4
     }
 ]
