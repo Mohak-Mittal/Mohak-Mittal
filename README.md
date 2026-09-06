@@ -36,6 +36,18 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 <br/>
 
+## 🌆 3D Contribution Graph
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/main/profile-3d-contrib/profile-night-rainbow.svg" alt="3D contribution graph" width="100%"/>
+
+</div>
+
+> Your real commit history, rendered as a little isometric city skyline — taller, brighter buildings mean more contributions that day. Auto-regenerated daily by the included GitHub Action (`.github/workflows/3d-contrib.yml`), same setup style as the snake.
+
+<br/>
+
 ## 🚀 Featured Projects
 
 <table width="100%">
