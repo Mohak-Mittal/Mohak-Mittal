@@ -19,13 +19,12 @@ jobs:
         uses: yoshi389111/github-profile-3d-contrib@0.7.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          username: ${{ github.repository_owner }}
+          USERNAME: ${{ github.repository_owner }}
 
       - name: Commit and push the generated images
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -f profile-3d-contrib/*.svg
+          git add -A .
           git commit -m "Update 3D contribution graph" || exit 0
           git push
