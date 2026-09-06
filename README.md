@@ -126,8 +126,6 @@ Personal site hosted on GitHub Pages with a Cloudflare Worker backend, featuring
   <img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/output/github-contribution-grid-snake-dark.svg" alt="snake animation" width="100%"/>
 </picture>
 
-<br/><br/>
-
 <img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/main/profile-3d-contrib/profile-custom.svg" alt="3D contribution graph" width="100%"/>
 
 </div>
