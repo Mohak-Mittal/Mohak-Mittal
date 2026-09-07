@@ -38,52 +38,11 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 ## 🚀 Featured Projects
 
-<table width="100%">
-<tr>
-<td width="50%" valign="top">
+<div align="center">
 
-### 🩸 Horror_Game
-**Unreal Engine 5 · Pure C++**
+<img src="featured_projects.svg" alt="Featured Projects" width="100%"/>
 
-A Granny-style first-person horror game built from scratch in C++ — AI enemy with sight/hearing perception, patrol/investigate/chase states, physics-reactive props, torch battery system, and door/key mechanics.
-
-`C++` `AI` `Game Design`
-
-</td>
-<td width="50%" valign="top">
-
-### 💪 FitForge
-**Web App**
-
-Fitness tracker with a dark ASUS Armory Crate–inspired HUD: dual semi-circle progress rings for exercise & meals, scanline bars, and particle aura effects that escalate with streak tiers.
-
-`JavaScript` `CSS` `Canvas`
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 🤖 AI Companion App
-**C++ · Local-first**
-
-A local AI companion with a reactive VRM avatar, mic input via Web Speech API, an LLM brain with emotion tagging, TTS, and lip sync — all running on a local C++ backend.
-
-`C++` `AI` `VRM`
-
-</td>
-<td width="50%" valign="top">
-
-### 🌐 Portfolio Website
-**HTML · CSS · JS**
-
-Personal site hosted on GitHub Pages with a Cloudflare Worker backend, featuring ARIA — a voice-enabled AI chatbot built with Transformers.js.
-
-`HTML` `CSS` `JavaScript`
-
-</td>
-</tr>
-</table>
+</div>
 
 <div align="center">
 
@@ -92,6 +51,7 @@ Personal site hosted on GitHub Pages with a Cloudflare Worker backend, featuring
 </div>
 
 <br/>
+
 
 ## 📊 GitHub Stats
 
