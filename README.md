@@ -57,12 +57,7 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=mohak-mittal&show_icons=true&theme=radical&hide_border=true&bg_color=0d0d1a&title_color=00e5ff&icon_color=7b2ff7&text_color=c9c9d9"/>
-<img height="165" src="https://github-readme-streak-stats.herokuapp.com/?user=mohak-mittal&theme=radical&hide_border=true&background=0d0d1a&ring=00e5ff&fire=ff2b4d&currStreakLabel=00e5ff"/>
-
-<br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=mohak-mittal&theme=react-dark&hide_border=true&bg_color=0d0d1a&color=00e5ff&line=7b2ff7&point=ff2b4d" width="100%"/>
+<img src="github_stats.svg" alt="GitHub Stats" width="100%"/>
 
 </div>
 
@@ -71,7 +66,7 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 ## 🏆 Trophies
 
 <div align="center">
-<img src="https://github-profile-trophy.vercel.app/?username=mohak-mittal&theme=radical&no-frame=true&row=1&column=6"/>
+<img src="trophies.svg" alt="Trophies" width="100%"/>
 </div>
 
 <br/>
