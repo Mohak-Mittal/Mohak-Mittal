@@ -108,49 +108,95 @@ def language_color(name):
 
 def make_svg(totals, repo_count, scanned_count, private_count):
     entries = sorted(totals.items(), key=lambda item: (-item[1], item[0].lower()))
-    total_bytes = sum(totals.values())
-    width, row_height = 1120, 58
-    per_column = max(1, (len(entries) + 1) // 2)
-    height = max(220, 160 + per_column * row_height + 34)
+    total_bytes = sum(totals.values()) or 1
+    font = "Segoe UI,Helvetica,Arial,sans-serif"
+    mono = "Consolas,'Courier New',monospace"
 
-    subtitle = f"{len(entries)} languages detected • {scanned_count} of {repo_count} owned repositories scanned"
+    width, pad = 900, 40
+    inner = width - pad * 2
+    col_gap, row_h = 40, 52
+    col_w = (inner - col_gap) // 2
+    rows = max(1, (len(entries) + 1) // 2)
+    list_top = 190
+    height = list_top + rows * row_h + 56
+
+    subtitle = f"{len(entries)} LANGUAGES  //  {scanned_count}/{repo_count} REPOSITORIES"
     if SHOW_PRIVATE_COUNT:
-        subtitle += f" • {private_count} private included"
+        subtitle += f"  //  {private_count} PRIVATE"
 
-    parts = [
+    p = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<defs>'
         '<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
-        '<stop offset="0" stop-color="#090516"/><stop offset="1" stop-color="#170826"/></linearGradient>'
-        '<linearGradient id="accent"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient>'
+        '<stop offset="0" stop-color="#0a0618"/><stop offset="1" stop-color="#1a0a2e"/></linearGradient>'
+        '<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">'
+        '<stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient>'
+        f'<clipPath id="barclip"><rect x="{pad}" y="118" width="{inner}" height="16" rx="8"/></clipPath>'
+        '<filter id="glow" x="-20%" y="-20%" width="140%" height="140%">'
+        '<feGaussianBlur stdDeviation="2.5" result="b"/>'
+        '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>'
         '</defs>',
-        f'<rect width="{width}" height="{height}" rx="18" fill="url(#bg)" stroke="#33204d"/>',
-        '<text x="38" y="48" fill="#f4eaff" font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="700">ALL REPOSITORY LANGUAGES</text>',
-        f'<text x="38" y="78" fill="#b9a6d2" font-family="Segoe UI,Arial,sans-serif" font-size="13">{html.escape(subtitle)}</text>',
-        f'<rect x="38" y="96" width="{width - 76}" height="3" rx="2" fill="url(#accent)"/>',
+        f'<rect width="{width}" height="{height}" rx="20" fill="url(#bg)"/>',
+        f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="20" fill="none" stroke="#3a2360"/>',
     ]
 
+    # Corner brackets (match the hero banner style)
+    c, m = 22, 14
+    for (x1, y1, dx, dy) in [(m, m, 1, 1), (width - m, m, -1, 1), (m, height - m, 1, -1), (width - m, height - m, -1, -1)]:
+        p.append(
+            f'<path d="M{x1} {y1 + dy * c} L{x1} {y1} L{x1 + dx * c} {y1}" '
+            'fill="none" stroke="#8b5cf6" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>'
+        )
+
+    # Header
+    p += [
+        f'<text x="{pad}" y="66" fill="#ffffff" font-family="{font}" font-size="28" font-weight="800" letter-spacing="2">ALL REPOSITORY LANGUAGES</text>',
+        f'<text x="{pad}" y="92" fill="#a78bfa" font-family="{mono}" font-size="13" letter-spacing="1.5">{html.escape(subtitle)}</text>',
+        f'<rect x="{pad}" y="104" width="64" height="3" rx="2" fill="url(#accent)"/>',
+    ]
+
+    # Segmented overview bar
+    p.append(f'<rect x="{pad}" y="118" width="{inner}" height="16" rx="8" fill="#241638"/>')
+    if entries:
+        p.append('<g clip-path="url(#barclip)" filter="url(#glow)">')
+        x = float(pad)
+        for name, count in entries:
+            w = max(inner * count / total_bytes, 2.0)
+            p.append(f'<rect x="{x:.2f}" y="118" width="{w:.2f}" height="16" fill="{language_color(name)}"/>')
+            x += w
+        p.append('</g>')
+        # thin separators between segments
+        x = float(pad)
+        for name, count in entries[:-1]:
+            x += max(inner * count / total_bytes, 2.0)
+            p.append(f'<rect x="{x - 0.75:.2f}" y="118" width="1.5" height="16" fill="#0a0618"/>')
+
+    # Language list
     if not entries:
-        parts.append('<text x="38" y="150" fill="#d9c8ef" font-family="Segoe UI,Arial,sans-serif" font-size="16">No language data was returned by GitHub.</text>')
+        p.append(f'<text x="{pad}" y="{list_top + 20}" fill="#d9c8ef" font-family="{font}" font-size="16">No language data was returned by GitHub.</text>')
     else:
         for i, (name, count) in enumerate(entries):
-            col, row = i // per_column, i % per_column
-            x, y = 38 + col * 540, 133 + row * row_height
-            pct = count / total_bytes * 100 if total_bytes else 0
-            label = html.escape(name if len(name) <= 27 else name[:24] + "…")
-            parts.extend([
-                f'<text x="{x}" y="{y}" fill="#f3eaff" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="600">{label}</text>',
-                f'<text x="{x + 520}" y="{y}" text-anchor="end" fill="#cbb8e4" font-family="Segoe UI,Arial,sans-serif" font-size="13">{pct:.2f}%</text>',
-                f'<rect x="{x}" y="{y + 10}" width="520" height="9" rx="5" fill="#30213f"/>',
-                f'<rect x="{x}" y="{y + 10}" width="{max(520 * pct / 100, 2):.2f}" height="9" rx="5" fill="{language_color(name)}"/>',
-            ])
+            col, row = i // rows, i % rows
+            x = pad + col * (col_w + col_gap)
+            y = list_top + row * row_h
+            pct = count / total_bytes * 100
+            color = language_color(name)
+            label = html.escape(name if len(name) <= 24 else name[:21] + "…")
+            fill_w = max(col_w * pct / 100, 3)
+            p += [
+                f'<circle cx="{x + 6}" cy="{y - 5}" r="5" fill="{color}" filter="url(#glow)"/>',
+                f'<text x="{x + 20}" y="{y}" fill="#f5edff" font-family="{font}" font-size="16" font-weight="600">{label}</text>',
+                f'<text x="{x + col_w}" y="{y}" text-anchor="end" fill="#d8c7f5" font-family="{mono}" font-size="15" font-weight="700">{pct:.1f}%</text>',
+                f'<rect x="{x}" y="{y + 12}" width="{col_w}" height="6" rx="3" fill="#241638"/>',
+                f'<rect x="{x}" y="{y + 12}" width="{fill_w:.2f}" height="6" rx="3" fill="{color}"/>',
+            ]
 
-    parts.append(
-        f'<text x="38" y="{height - 18}" fill="#806b9d" font-family="Segoe UI,Arial,sans-serif" font-size="11">'
-        'GitHub Linguist language bytes aggregated across owned repositories.</text>'
+    p.append(
+        f'<text x="{width - pad}" y="{height - 24}" text-anchor="end" fill="#6d5a8c" font-family="{mono}" '
+        'font-size="11" letter-spacing="1">SOURCE: GITHUB LINGUIST  //  AUTO-UPDATED DAILY</text>'
     )
-    parts.append("</svg>")
-    return "\n".join(parts)
+    p.append("</svg>")
+    return "\n".join(p)
 
 
 def main():
@@ -193,7 +239,7 @@ def main():
         scanned += 1
         for language, byte_count in languages.items():
             totals[language] = totals.get(language, 0) + int(byte_count)
-        print(f"Scanned {full} ({'private' if is_private else 'public'}): {', '.join(sorted(languages)) or 'NO LANGUAGES'}")
+        print(f"Scanned {full} ({'private' if is_private else 'public'}): {len(languages)} languages")
 
     if failed:
         print(f"WARNING: {len(failed)} repositories could not be scanned: {', '.join(failed)}", file=sys.stderr)
