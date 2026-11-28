@@ -93,8 +93,6 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 </div>
 
-> Both driven by your real commit history, regenerated daily by their own GitHub Actions, and both recolored to the same deep-violet → neon-magenta palette as the rest of the profile. The snake's length is tied to your actual 52-week contribution history (GitHub controls that part, not us) — the 3D graph turns that same data into a little isometric city skyline where taller, brighter buildings mean more contributions that day.
-
 <br/>
 
 ## 💭 What I Believe
