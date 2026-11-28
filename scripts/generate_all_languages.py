@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Generate an SVG showing every language detected across a GitHub user's owned repositories."""
-
-from __future__ import annotations
-
+"""Generate an SVG chart of all languages across public and private owned repositories."""
+import colorsys
+import html
 import json
 import os
 import sys
@@ -10,17 +9,19 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-import colorsys
-import html
 from pathlib import Path
 
-USERNAME = os.environ.get("GITHUB_USERNAME", "mohak-mittal")
-TOKEN = os.environ.get("GITHUB_TOKEN", "")
-OUTPUT = Path(os.environ.get("LANGUAGE_SVG_OUTPUT", "all_languages.svg"))
+USERNAME = os.environ.get("GITHUB_USERNAME", "Mohak-Mittal")
+TOKEN = os.environ.get("LANGUAGE_SCAN_TOKEN", "").strip()
+OUTPUT = Path("all_languages.svg")
 API = "https://api.github.com"
 PER_PAGE = 100
 
-# Familiar language colors where available; deterministic neon colors for everything else.
+# Set to True to show "X private repositories included" in the chart subtitle.
+SHOW_PRIVATE_COUNT = False
+# Set to True to skip forked repositories.
+EXCLUDE_FORKS = False
+
 KNOWN_COLORS = {
     "C": "#555555", "C++": "#f34b7d", "C#": "#178600", "CSS": "#663399",
     "HTML": "#e34c26", "Java": "#b07219", "JavaScript": "#f1e05a",
@@ -29,123 +30,182 @@ KNOWN_COLORS = {
     "Shell": "#89e051", "TypeScript": "#3178c6", "Go": "#00ADD8",
     "Dart": "#00B4AB", "Swift": "#F05138", "R": "#198CE7",
     "PowerShell": "#012456", "Vue": "#41b883", "SCSS": "#c6538c",
+    "Batchfile": "#C1F12E", "Lua": "#000080", "GLSL": "#5686a5",
+    "HLSL": "#aace60", "ShaderLab": "#222c37", "Makefile": "#427819",
+    "Dockerfile": "#384d54", "Svelte": "#ff3e00", "Astro": "#ff5a03",
 }
 
-def api_get(path: str):
-    url = API + path
-    headers = {
+
+def api_get(path):
+    """GET a GitHub API path with retries for rate limits and transient errors."""
+    req = urllib.request.Request(API + path, headers={
         "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {TOKEN}",
         "X-GitHub-Api-Version": "2022-11-28",
         "User-Agent": "all-repository-languages-generator",
-    }
-    if TOKEN:
-        headers["Authorization"] = f"Bearer {TOKEN}"
-    request = urllib.request.Request(url, headers=headers)
+    })
+    last_error = None
     for attempt in range(4):
         try:
-            with urllib.request.urlopen(request, timeout=30) as response:
+            with urllib.request.urlopen(req, timeout=30) as response:
                 return json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
-            if exc.code in (403, 429) and attempt < 3:
+            body = exc.read().decode("utf-8", errors="replace")
+            remaining = exc.headers.get("X-RateLimit-Remaining")
+            rate_limited = exc.code == 429 or (exc.code == 403 and remaining == "0")
+            if (rate_limited or exc.code >= 500) and attempt < 3:
                 reset = exc.headers.get("X-RateLimit-Reset")
-                wait = max(2, min(60, int(reset) - int(time.time()))) if reset else 10 * (attempt + 1)
-                print(f"Rate limited; waiting {wait}s...", file=sys.stderr)
+                if rate_limited and reset and reset.isdigit():
+                    wait = max(2, min(120, int(reset) - int(time.time())))
+                else:
+                    wait = 5 * (attempt + 1)
+                print(f"HTTP {exc.code}; retrying in {wait}s...", file=sys.stderr)
+                time.sleep(wait)
+                last_error = exc
+                continue
+            raise RuntimeError(
+                f"GitHub API HTTP {exc.code} for {path}. "
+                f"Check token permissions/access. Response: {body[:500]}"
+            ) from exc
+        except urllib.error.URLError as exc:
+            last_error = exc
+            if attempt < 3:
+                wait = 5 * (attempt + 1)
+                print(f"Network error ({exc.reason}); retrying in {wait}s...", file=sys.stderr)
                 time.sleep(wait)
                 continue
-            raise
-    raise RuntimeError(f"GitHub API request failed: {url}")
+            raise RuntimeError(f"Network error for {path}: {exc.reason}") from exc
+    raise RuntimeError(f"API request failed after retries: {path} ({last_error})")
 
-def get_repositories():
-    repositories = []
-    page = 1
+
+def get_owned_repositories():
+    repos, page = [], 1
     while True:
-        batch = api_get(
-            f"/users/{urllib.parse.quote(USERNAME)}/repos"
-            f"?type=owner&per_page={PER_PAGE}&page={page}&sort=full_name"
-        )
-        if not batch:
-            break
-        repositories.extend(batch)
+        query = urllib.parse.urlencode({
+            "visibility": "all",
+            "affiliation": "owner",
+            "per_page": PER_PAGE,
+            "page": page,
+            "sort": "full_name",
+        })
+        batch = api_get("/user/repos?" + query)
+        if not isinstance(batch, list):
+            raise RuntimeError("Unexpected response while listing repositories.")
+        repos.extend(batch)
+        print(f"Repository listing page {page}: {len(batch)} repositories")
         if len(batch) < PER_PAGE:
-            break
+            return repos
         page += 1
-    return repositories
 
-def language_color(name: str) -> str:
+
+def language_color(name):
     if name in KNOWN_COLORS:
         return KNOWN_COLORS[name]
-    # Stable color based on the language name, with a saturated neon hue.
     hue = (sum((i + 1) * ord(ch) for i, ch in enumerate(name)) % 360) / 360
-    red, green, blue = colorsys.hsv_to_rgb(hue, 0.62, 0.96)
-    return "#{:02x}{:02x}{:02x}".format(round(red * 255), round(green * 255), round(blue * 255))
+    r, g, b = colorsys.hsv_to_rgb(hue, 0.62, 0.96)
+    return "#{:02x}{:02x}{:02x}".format(round(r * 255), round(g * 255), round(b * 255))
 
-def make_svg(totals, repo_count, scanned_count):
+
+def make_svg(totals, repo_count, scanned_count, private_count):
     entries = sorted(totals.items(), key=lambda item: (-item[1], item[0].lower()))
     total_bytes = sum(totals.values())
-    width = 1120
-    columns = 2
-    per_column = (len(entries) + 1) // 2
-    row_height = 58
+    width, row_height = 1120, 58
+    per_column = max(1, (len(entries) + 1) // 2)
     height = max(220, 160 + per_column * row_height + 34)
+
+    subtitle = f"{len(entries)} languages detected • {scanned_count} of {repo_count} owned repositories scanned"
+    if SHOW_PRIVATE_COUNT:
+        subtitle += f" • {private_count} private included"
 
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        '<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#090516"/><stop offset="1" stop-color="#170826"/></linearGradient>',
-        '<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient></defs>',
+        '<defs>'
+        '<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
+        '<stop offset="0" stop-color="#090516"/><stop offset="1" stop-color="#170826"/></linearGradient>'
+        '<linearGradient id="accent"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ff4fd8"/></linearGradient>'
+        '</defs>',
         f'<rect width="{width}" height="{height}" rx="18" fill="url(#bg)" stroke="#33204d"/>',
         '<text x="38" y="48" fill="#f4eaff" font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="700">ALL REPOSITORY LANGUAGES</text>',
-        f'<text x="38" y="78" fill="#b9a6d2" font-family="Segoe UI,Arial,sans-serif" font-size="13">{len(entries)} languages detected  •  {scanned_count} repositories scanned  •  {total_bytes:,} bytes of code</text>',
-        f'<rect x="38" y="96" width="{width-76}" height="3" rx="2" fill="url(#accent)"/>',
+        f'<text x="38" y="78" fill="#b9a6d2" font-family="Segoe UI,Arial,sans-serif" font-size="13">{html.escape(subtitle)}</text>',
+        f'<rect x="38" y="96" width="{width - 76}" height="3" rx="2" fill="url(#accent)"/>',
     ]
 
     if not entries:
-        parts.append('<text x="38" y="150" fill="#d9c8ef" font-family="Segoe UI,Arial,sans-serif" font-size="16">No language data was returned by GitHub for the scanned repositories.</text>')
+        parts.append('<text x="38" y="150" fill="#d9c8ef" font-family="Segoe UI,Arial,sans-serif" font-size="16">No language data was returned by GitHub.</text>')
     else:
-        col_width = 520
-        for index, (name, byte_count) in enumerate(entries):
-            col = index // per_column
-            row = index % per_column
-            x = 38 + col * 540
-            y = 133 + row * row_height
-            pct = byte_count / total_bytes * 100 if total_bytes else 0
-            color = language_color(name)
-            safe_name = html.escape(name)
-            label = safe_name if len(name) <= 27 else html.escape(name[:24] + "…")
+        for i, (name, count) in enumerate(entries):
+            col, row = i // per_column, i % per_column
+            x, y = 38 + col * 540, 133 + row * row_height
+            pct = count / total_bytes * 100 if total_bytes else 0
+            label = html.escape(name if len(name) <= 27 else name[:24] + "…")
             parts.extend([
                 f'<text x="{x}" y="{y}" fill="#f3eaff" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="600">{label}</text>',
-                f'<text x="{x+col_width}" y="{y}" text-anchor="end" fill="#cbb8e4" font-family="Segoe UI,Arial,sans-serif" font-size="13">{pct:.2f}%</text>',
-                f'<rect x="{x}" y="{y+10}" width="{col_width}" height="9" rx="5" fill="#30213f"/>',
-                f'<rect x="{x}" y="{y+10}" width="{col_width * pct / 100:.2f}" height="9" rx="5" fill="{color}"/>',
+                f'<text x="{x + 520}" y="{y}" text-anchor="end" fill="#cbb8e4" font-family="Segoe UI,Arial,sans-serif" font-size="13">{pct:.2f}%</text>',
+                f'<rect x="{x}" y="{y + 10}" width="520" height="9" rx="5" fill="#30213f"/>',
+                f'<rect x="{x}" y="{y + 10}" width="{max(520 * pct / 100, 2):.2f}" height="9" rx="5" fill="{language_color(name)}"/>',
             ])
-    parts.append('<text x="38" y="{}" fill="#806b9d" font-family="Segoe UI,Arial,sans-serif" font-size="11">Language sizes are aggregated from GitHub Linguist data across owned repositories. Updated automatically by GitHub Actions.</text>'.format(height - 18))
+
+    parts.append(
+        f'<text x="38" y="{height - 18}" fill="#806b9d" font-family="Segoe UI,Arial,sans-serif" font-size="11">'
+        'GitHub Linguist language bytes aggregated across owned repositories.</text>'
+    )
     parts.append("</svg>")
     return "\n".join(parts)
 
+
 def main():
-    print(f"Scanning owned repositories for {USERNAME}...")
-    repositories = get_repositories()
-    totals = {}
-    scanned = 0
-    for repo in repositories:
-        full_name = repo.get("full_name", "")
-        if not full_name:
+    if not TOKEN:
+        raise RuntimeError(
+            "Missing LANGUAGE_SCAN_TOKEN secret. Add a fine-grained PAT with "
+            "Metadata: read access to all repositories owned by this account."
+        )
+
+    print(f"Authenticating and scanning repositories owned by {USERNAME}...")
+    user = api_get("/user")
+    actual = user.get("login", "")
+    if actual.lower() != USERNAME.lower():
+        raise RuntimeError(
+            f"Token belongs to '{actual}', but GITHUB_USERNAME is '{USERNAME}'. "
+            "Create the token while signed in to the target account."
+        )
+
+    repos = get_owned_repositories()
+    if EXCLUDE_FORKS:
+        repos = [r for r in repos if not r.get("fork")]
+    if not repos:
+        raise RuntimeError("GitHub returned zero owned repositories. Check token repository access.")
+
+    totals, scanned, private_count, failed = {}, 0, 0, []
+    for repo in repos:
+        full = repo.get("full_name", "")
+        if not full or "/" not in full:
             continue
-        # GitHub's language endpoint reports byte counts per detected language.
-        owner, name = full_name.split("/", 1)
+        is_private = bool(repo.get("private"))
+        private_count += int(is_private)
+        owner, name = full.split("/", 1)
         path = f"/repos/{urllib.parse.quote(owner)}/{urllib.parse.quote(name)}/languages"
         try:
             languages = api_get(path)
-        except Exception as exc:
-            print(f"WARNING: Could not scan {full_name}: {exc}", file=sys.stderr)
+        except Exception as exc:  # keep going; report at the end
+            failed.append(full)
+            print(f"ERROR scanning {full}: {exc}", file=sys.stderr)
             continue
         scanned += 1
         for language, byte_count in languages.items():
             totals[language] = totals.get(language, 0) + int(byte_count)
-        print(f"Scanned {full_name}")
+        print(f"Scanned {full} ({'private' if is_private else 'public'}): {len(languages)} languages")
 
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(make_svg(totals, len(repositories), scanned), encoding="utf-8")
-    print(f"Generated {OUTPUT} with {len(totals)} detected languages across {scanned} repositories.")
+    if failed:
+        print(f"WARNING: {len(failed)} repositories could not be scanned: {', '.join(failed)}", file=sys.stderr)
+    if not scanned:
+        raise RuntimeError("No repositories scanned successfully; refusing to publish an empty chart.")
+
+    OUTPUT.write_text(make_svg(totals, len(repos), scanned, private_count), encoding="utf-8")
+    print(
+        f"SUCCESS: {OUTPUT}; {len(totals)} languages; {scanned}/{len(repos)} repos scanned; "
+        f"{private_count} private repos visible to token."
+    )
+
 
 if __name__ == "__main__":
     main()
