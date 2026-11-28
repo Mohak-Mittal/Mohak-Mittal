@@ -1,0 +1,49 @@
+
+name: Update All Repository Languages
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "all_languages.svg"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate language visualizer
+        env:
+          GITHUB_USERNAME: mohak-mittal
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/generate_all_languages.py
+
+      - name: Commit generated SVG
+        run: |
+          git add -f all_languages.svg
+
+          if git diff --cached --quiet -- all_languages.svg; then
+            echo "Language chart is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git commit -m "chore: update all repository languages"
+          git push
