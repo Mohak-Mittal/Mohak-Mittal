@@ -193,7 +193,7 @@ def main():
         scanned += 1
         for language, byte_count in languages.items():
             totals[language] = totals.get(language, 0) + int(byte_count)
-        print(f"Scanned {full} ({'private' if is_private else 'public'}): {len(languages)} languages")
+        print(f"Scanned {full} ({'private' if is_private else 'public'}): {', '.join(sorted(languages)) or 'NO LANGUAGES'}")
 
     if failed:
         print(f"WARNING: {len(failed)} repositories could not be scanned: {', '.join(failed)}", file=sys.stderr)
