@@ -85,6 +85,8 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 <img src="git_activity.svg" alt="Git activity" width="100%"/>
 
+<img src="all_languages.svg" alt="All detected languages across my GitHub repositories" width="100%"/>
+
 <br/><br/>
 
 <img src="https://raw.githubusercontent.com/mohak-mittal/mohak-mittal/main/profile-3d-contrib/profile-custom.svg" alt="3D contribution graph" width="100%"/>
