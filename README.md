@@ -99,7 +99,32 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 ## 💭 What I Believe
 
-> Code isn't just about syntax — it's about solving real problems and building something people actually love using.
+<div align="center">
+
+### ⚡ *"Talk is cheap. Show me the code."*
+**— Linus Torvalds**
+
+<br/>
+
+> 🎮 **Great games are not made, they are survived.**
+> Every bug, every crash, every 3 AM rebuild is part of the craft.
+
+> 🧠 **Skill is built in the hours nobody claps for.**
+> Discipline beats talent the day talent stops showing up.
+
+> 🔥 **I don't wait for permission to build.**
+> One person, one machine, one idea is enough to start a studio.
+
+> 🕹️ **Make it work. Make it right. Make it fast.**
+> — Kent Beck
+
+> 🌌 **Code isn't just about syntax. It's about solving real problems and building something people actually love using.**
+
+<br/>
+
+**Build bold. Ship often. Never stop leveling up.** 🚀
+
+</div>
 
 <br/>
 
@@ -109,9 +134,14 @@ I'm always open to collaboration, freelance work, or just talking shop about gam
 
 <div align="center">
 
-<a href="https://github.com/mohak-mittal"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/></a>
-<a href="https://linkedin.com/in/mohak-mittal92"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
-<a href="mailto:mohakmittal2003@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white"/></a>
+<a href="https://github.com/mohak-mittal"><img src="buttons/btn_github.svg" alt="GitHub" width="260"/></a>
+<a href="https://linkedin.com/in/mohak-mittal92"><img src="buttons/btn_linkedin.svg" alt="LinkedIn" width="260"/></a>
+<a href="https://instagram.com/YOUR_INSTAGRAM_USERNAME"><img src="buttons/btn_instagram.svg" alt="Instagram" width="260"/></a>
+
+<br/>
+
+<a href="https://mohak-mittal.github.io/Portfolio/"><img src="buttons/btn_portfolio.svg" alt="Portfolio" width="260"/></a>
+<a href="mailto:mohakmittal2003@gmail.com"><img src="buttons/btn_mail.svg" alt="Email me" width="260"/></a>
 
 </div>
 
