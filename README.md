@@ -141,7 +141,7 @@ I'm always open to collaboration, freelance work, or just talking shop about gam
 <br/>
 
 <a href="https://mohak-mittal.github.io/Portfolio/"><img src="buttons/btn_portfolio.svg" alt="Portfolio" width="260"/></a>
-<a href="mailto:mohakmittal92@gmail.com"><img src="buttons/btn_mail.svg" alt="Email me" width="260"/></a>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=mohakmittal92@gmail.com&su=Hello%20Mohak"><img src="buttons/btn_mail.svg" alt="Email me" width="260"/></a>
 
 </div>
 
