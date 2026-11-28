@@ -85,6 +85,8 @@ I build immersive 3D experiences and interactive applications. Passionate about 
 
 <img src="git_activity.svg" alt="Git activity" width="100%"/>
 
+<br/><br/>
+
 <img src="all_languages.svg" alt="All detected languages across my GitHub repositories" width="100%"/>
 
 <br/><br/>
