@@ -33,6 +33,16 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Check secret is present
+        env:
+          T: ${{ secrets.LANGUAGE_SCAN_TOKEN }}
+        run: |
+          if [ -z "$T" ]; then
+            echo "::error::LANGUAGE_SCAN_TOKEN is EMPTY. Add it in THIS repo: Settings > Secrets and variables > Actions > Repository secrets."
+            exit 1
+          fi
+          echo "Secret present, length ${#T}"
+
       - name: Generate language visualizer
         env:
           GITHUB_USERNAME: Mohak-Mittal
