@@ -136,12 +136,12 @@ I'm always open to collaboration, freelance work, or just talking shop about gam
 
 <a href="https://github.com/mohak-mittal"><img src="buttons/btn_github.svg" alt="GitHub" width="260"/></a>
 <a href="https://linkedin.com/in/mohak-mittal92"><img src="buttons/btn_linkedin.svg" alt="LinkedIn" width="260"/></a>
-<a href="https://instagram.com/YOUR_INSTAGRAM_USERNAME"><img src="buttons/btn_instagram.svg" alt="Instagram" width="260"/></a>
+<a href="https://instagram.com/@mohakmittal92"><img src="buttons/btn_instagram.svg" alt="Instagram" width="260"/></a>
 
 <br/>
 
 <a href="https://mohak-mittal.github.io/Portfolio/"><img src="buttons/btn_portfolio.svg" alt="Portfolio" width="260"/></a>
-<a href="mailto:mohakmittal2003@gmail.com"><img src="buttons/btn_mail.svg" alt="Email me" width="260"/></a>
+<a href="mailto:mohakmittal92@gmail.com"><img src="buttons/btn_mail.svg" alt="Email me" width="260"/></a>
 
 </div>
 
